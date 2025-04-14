@@ -1,0 +1,77 @@
+// ====================
+// Entität: Teacher (Lehrkraft)
+// ====================
+Table teacher {
+  id int [pk, increment] // Primärschlüssel, automatisch inkrementiert
+  name varchar(100) // Vollständiger Name der Lehrkraft
+  name_short varchar(10) // Kürzel (z.B. "sb")
+  email varchar(255) [unique] // Eindeutige E-Mail-Adresse
+  training_time int // Gesamtzeit aller Fortbildungen (in Minuten)
+}
+
+// ====================
+// Entität: Training (Veranstaltung)
+// ====================
+Table training {
+  id int [pk, increment] // Primärschlüssel
+  title varchar(255) // Titel der Veranstaltung
+  date date // Datum der Veranstaltung
+  duration int // Dauer in Minuten
+  location varchar(255) // Veranstaltungsort
+  provider_id int // Fremdschlüssel zum Anbieter
+}
+
+// ====================
+// Entität: Provider (Anbieter)
+// ====================
+Table provider {
+  id int [pk, increment] // Primärschlüssel
+  name varchar(255) // Name des Anbieters
+}
+
+// ====================
+// Entität: SubjectArea (Fachbereich)
+// ====================
+Table subject_area {
+  id int [pk, increment] // Primärschlüssel
+  name varchar(100) // Name des Fachbereichs (z.B. IT, Verwaltung)
+}
+
+// ====================
+// Join-Tabelle: Teacher_Training
+// ====================
+Table teacher_training {
+  teacher_id int // Fremdschlüssel auf Teacher
+  training_id int // Fremdschlüssel auf Training
+  rating int // Bewertung (1–5 Sterne)
+  is_contact boolean // Ist Ansprechpartner (Ja/Nein)
+  can_present boolean // Kann Mikrofortbildung vorstellen
+  offers_micro_training boolean // Bietet Mikrofortbildung an
+
+  Note: "Zuordnung Lehrer ↔ Veranstaltung mit Zusatzinfos"
+
+  Indexes {
+    (teacher_id, training_id) [pk] // zusammengesetzter Primärschlüssel
+  }
+}
+
+// ====================
+// Join-Tabelle: Teacher_SubjectArea
+// ====================
+Table teacher_subject_area {
+  teacher_id int // Fremdschlüssel auf Teacher
+  subject_area_id int // Fremdschlüssel auf SubjectArea
+
+  Indexes {
+    (teacher_id, subject_area_id) [pk] // zusammengesetzter Primärschlüssel
+  }
+}
+
+// ====================
+// Beziehungen
+// ====================
+Ref: training.provider_id > provider.id // Veranstaltung gehört zu einem Anbieter
+Ref: teacher_training.teacher_id > teacher.id // Teilnahme: Lehrer ↔ Veranstaltung
+Ref: teacher_training.training_id > training.id
+Ref: teacher_subject_area.teacher_id > teacher.id // Lehrer ↔ Fachbereich
+Ref: teacher_subject_area.subject_area_id > subject_area.id

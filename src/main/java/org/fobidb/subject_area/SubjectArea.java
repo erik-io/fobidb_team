@@ -3,24 +3,23 @@ package org.fobidb.subject_area;
 import jakarta.persistence.*;
 
 @Entity
-@Table
-public class Subject_Area {
+public class SubjectArea {
+
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
     public int id;
+
+    @Column(length = 100)
     public String name;
 
-    public Subject_Area() {
+    public SubjectArea() {
     }
 
-    public Subject_Area(int id, String name) {
+    public SubjectArea(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Subject_Area(String name) {
+    public SubjectArea(String name) {
         this.name = name;
     }
 
@@ -40,8 +39,8 @@ public class Subject_Area {
         this.name = name;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Subject_Area{" +
                 "id=" + id +
                 ", name='" + name + '\'' +

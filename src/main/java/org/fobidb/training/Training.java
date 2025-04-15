@@ -1,39 +1,54 @@
 package org.fobidb.training;
 
 import jakarta.persistence.*;
+import org.fobidb.provider.Provider;
+
+import java.util.Date;
 
 @Entity
-@Table
+//@Table
 public class Training {
+//    @GeneratedValue(
+//            strategy = GenerationType.IDENTITY
+//    )
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
     public int id;
-    public int provider_id;
+
+    @Column(length = 255)
     public String title;
+
+    @Temporal(TemporalType.DATE)
     public Date date;
+
     public int duration;
+
+    @Column(length = 255)
     public String location;
+
+
+    @ManyToOne
+    @JoinColumn(name = "provider_id")
+    public Provider provider;
+
 
     public Training() {
     }
 
-    public Training(int id, String location, int provider_id, Date date, String title, int duration) {
+    public Training(int id, String title, Date date, int duration, String location, Provider provider) {
         this.id = id;
-        this.location = location;
-        this.provider_id = provider_id;
-        this.date = date;
         this.title = title;
+        this.date = date;
         this.duration = duration;
+        this.location = location;
+        this.provider = provider;
     }
 
-    public Training(int provider_id, String title, int duration, Date date, String location) {
-        this.provider_id = provider_id;
+    public Training(String title, Date date, int duration, String location, Provider provider) {
         this.title = title;
-        this.duration = duration;
         this.date = date;
+        this.duration = duration;
         this.location = location;
+        this.provider = provider;
     }
 
     public int getId() {
@@ -44,12 +59,12 @@ public class Training {
         this.id = id;
     }
 
-    public java.lang.String getLocation() {
-        return location;
+    public String getTitle() {
+        return title;
     }
 
-    public void setLocation(java.lang.String location) {
-        this.location = location;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getDuration() {
@@ -68,31 +83,32 @@ public class Training {
         this.date = date;
     }
 
-    public java.lang.String getTitle() {
-        return title;
+    public String getLocation() {
+        return location;
     }
 
-    public void setTitle(java.lang.String title) {
-        this.title = title;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public int getProvider_id() {
-        return provider_id;
+    public Provider getProvider() {
+        return provider;
     }
 
-    public void setProvider_id(int provider_id) {
-        this.provider_id = provider_id;
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Training{" +
                 "id=" + id +
-                ", provider_id=" + provider_id +
                 ", title='" + title + '\'' +
                 ", date=" + date +
                 ", duration=" + duration +
                 ", location='" + location + '\'' +
+                ", provider=" + provider +
                 '}';
     }
+
 }

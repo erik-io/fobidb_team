@@ -3,17 +3,21 @@ package org.fobidb.provider;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+//@Table
 
-public class provider{
+public class Provider {
+
+//    @GeneratedValue(
+//            strategy = GenerationType.IDENTITY
+//    )
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
     public int id;
+
+    @Column(length = 255)
     public String name;
 
-    public provider() {
+
+    public Provider() {
     }
 
     public Provider(int id, String name) {
@@ -41,8 +45,8 @@ public class provider{
         this.name = name;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Provider{" +
                 "id=" + id +
                 ", name='" + name + '\'' +

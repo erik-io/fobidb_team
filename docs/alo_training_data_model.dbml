@@ -3,7 +3,8 @@
 // ====================
 Table teacher {
   id int [pk, increment] // Primärschlüssel, automatisch inkrementiert
-  name varchar(100) // Vollständiger Name der Lehrkraft
+  surname varchar(100) // Nachname der Lehrkraft
+  name varchar(100) // Vorname der Lehrkraft
   name_short varchar(10) // Kürzel (z.B. "sb")
   email varchar(255) [unique] // Eindeutige E-Mail-Adresse
   training_time int // Gesamtzeit aller Fortbildungen (in Minuten)

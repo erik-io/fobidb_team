@@ -1,4 +1,4 @@
-package org.fobidb.id;
+package org.fobidb.teacher.ids;
 
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;

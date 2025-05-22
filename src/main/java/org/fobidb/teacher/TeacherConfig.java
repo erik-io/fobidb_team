@@ -19,7 +19,6 @@ public class TeacherConfig {
             // Prüfen, ob die Datenbank bereits Einträge enthält
             if (repository.count() == 0) {
                 Teacher sb = new Teacher(
-                        1,
                         "Schubert",
                         "Simon",
                         "sb",

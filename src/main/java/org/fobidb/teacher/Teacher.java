@@ -1,29 +1,30 @@
 package org.fobidb.teacher;
 
 import jakarta.persistence.*;
-import org.fobidb.teacher_subject_area.TeacherSubjectArea;
-import org.fobidb.teacher_training.TeacherTraining;
+import org.fobidb.teacher.associations.TeacherSubjectArea;
+import org.fobidb.teacher.associations.TeacherTraining;
 
 import java.util.Set;
 
 @Entity
 public class Teacher {
     @Id
-    public int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     @Column(length = 100)
-    public String surname;
+    private String surname;
 
     @Column(length = 100)
-    public String name;
+    private String name;
 
     @Column(length = 10)
-    public String name_short;
+    private String nameShort;
 
     @Column(length = 255)
-    public String email;
+    private String email;
 
-    public int training_time;
+    private int trainingTime;
 
     @OneToMany(mappedBy = "teacher")
     private Set<TeacherTraining> trainings;
@@ -34,21 +35,21 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(int id, String surname, String name, String name_short, String email, int training_time) {
+    public Teacher(int id, String surname, String name, String nameShort, String email, int trainingTime) {
         this.id = id;
         this.surname = surname;
         this.name = name;
-        this.name_short = name_short;
+        this.nameShort = nameShort;
         this.email = email;
-        this.training_time = training_time;
+        this.trainingTime = trainingTime;
     }
 
-    public Teacher(String surname, String name, String name_short, String email, int training_time) {
+    public Teacher(String surname, String name, String nameShort, String email, int trainingTime) {
         this.surname = surname;
         this.name = name;
-        this.name_short = name_short;
+        this.nameShort = nameShort;
         this.email = email;
-        this.training_time = training_time;
+        this.trainingTime = trainingTime;
     }
 
     public int getId() {
@@ -75,12 +76,12 @@ public class Teacher {
         this.name = name;
     }
 
-    public String getName_short() {
-        return name_short;
+    public String getNameShort() {
+        return nameShort;
     }
 
-    public void setName_short(String name_short) {
-        this.name_short = name_short;
+    public void setNameShort(String name_short) {
+        this.nameShort = name_short;
     }
 
     public String getEmail() {
@@ -91,12 +92,12 @@ public class Teacher {
         this.email = email;
     }
 
-    public int getTraining_time() {
-        return training_time;
+    public int getTrainingTime() {
+        return trainingTime;
     }
 
-    public void setTraining_time(int training_time) {
-        this.training_time = training_time;
+    public void setTrainingTime(int training_time) {
+        this.trainingTime = training_time;
     }
 
     public Set<TeacherTraining> getTrainings() {
@@ -121,9 +122,9 @@ public class Teacher {
                 "id=" + id +
                 ", surname='" + surname + '\'' +
                 ", name='" + name + '\'' +
-                ", name_short='" + name_short + '\'' +
+                ", name_short='" + nameShort + '\'' +
                 ", email='" + email + '\'' +
-                ", training_time=" + training_time +
+                ", training_time=" + trainingTime +
                 '}';
     }
 }

@@ -1,7 +1,7 @@
-package org.fobidb.teacher_subject_area;
+package org.fobidb.teacher.associations;
 
 import jakarta.persistence.*;
-import org.fobidb.id.TeacherSubjectAreaId;
+import org.fobidb.teacher.ids.TeacherSubjectAreaId;
 import org.fobidb.subject_area.SubjectArea;
 import org.fobidb.teacher.Teacher;
 

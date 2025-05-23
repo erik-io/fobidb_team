@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Die Klasse ProviderService stellt die Geschäftslogik für die Verarbeitung und Verwaltung
@@ -29,14 +30,24 @@ public class ProviderService {
     }
 
     public List<Provider> getProviders() {
-        return providerRepository.findAll();
+        return providerRepository.findAll(); // Ruft alle Anbieter aus der Datenbank ab.
     }
 
     public void addNewProvider(Provider provider) {
+        // Validierung: Prüfen, ob ein Anbieter mit dem gleichen Namen bereits existiert.
+        Optional<Provider> providerOptional = providerRepository.findByName(provider.getName()); // Methode aus dem ProviderRepository
+        if (providerOptional.isPresent()) { // Wir prüfen, ob das Optional einen Wert enthält
+            throw new IllegalStateException("Provider with name " + provider.getName() + " already exists");
+        }
         providerRepository.save(provider);
     }
 
     public void deleteProvider(Long providerId) {
+        // Prüfen, ob der Anbieter mit der gegebenen ID existiert, bevor er gelöscht wird
+        boolean exists = providerRepository.existsById(providerId);
+        if (!exists) {
+            throw new IllegalStateException("Provider with ID " + providerId + " does not exist");
+        }
         providerRepository.deleteById(providerId);
     }
 }

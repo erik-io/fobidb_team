@@ -3,6 +3,8 @@ package org.fobidb.provider;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * ProviderRepository ist ein Repository-Interface, das die Datenzugriffsoperationen
  * für die Entität Provider bereitstellt. Es erweitert JpaRepository und bietet somit
@@ -17,5 +19,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ProviderRepository extends JpaRepository<Provider, Long> {
-
+    // Spring Data JPA leitet die SQL-Abfrage automatisch aus dem Methodennamen ab (findByName)
+    // Wir verwenden Optional<Provider>, weil das Ergebnis der Suche leer sein kann
+    Optional<Provider> findByName(String name);
 }

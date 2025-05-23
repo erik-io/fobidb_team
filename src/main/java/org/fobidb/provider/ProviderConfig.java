@@ -22,7 +22,7 @@ import java.util.List;
 public class ProviderConfig {
     @Bean
         // Diese Annotation sagt Spring, dass das Objekt, das diese Methode zurückgibt, ein "Bean" ist, also ein Objekt, das von Spring verwaltet werden soll.
-    CommandLineRunner commandLineRunner(ProviderRepository providerRepository) { // Spezielles Interface von Spring Boot, wenn ein Bean vom Typ CommandLineRunner definiert wird, wird dessen run-Method automatisch ausgeführt, nachdem die Anwendung vollständig gestartet wurde
+    CommandLineRunner commandLineRunnerProvider(ProviderRepository providerRepository) { // Spezielles Interface von Spring Boot, wenn ein Bean vom Typ CommandLineRunner definiert wird, wird dessen run-Method automatisch ausgeführt, nachdem die Anwendung vollständig gestartet wurde
         return args -> {
             if (providerRepository.count() == 0) {
                 Provider fortbildungBerlin = new Provider(

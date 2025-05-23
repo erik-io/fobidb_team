@@ -22,6 +22,10 @@ public class Provider {
     public Provider() { // Parameterloser Konstruktor, für JPA notwendig, damit es die Entitäten instanziieren kann.
     }
 
+    public Provider(String name) {
+        this.name = name;
+    }
+
     public Provider(Long id, String name) {
         this.id = id;
         this.name = name;

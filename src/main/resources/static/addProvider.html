@@ -21,7 +21,7 @@
 </head>
 <body>
 <h1>Neuen Anbieter hinzufügen</h1>
-<form id="teacherForm">
+<form id="providerForm">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name"
            required><br><br>
@@ -38,7 +38,7 @@
     </tr>
     </thead>
     <tbody>
-    <!-- Lehrer-Daten werden hier eingefügt -->
+    <!-- Anbieter-Daten werden hier eingefügt -->
     </tbody>
 </table>
 
@@ -59,7 +59,7 @@
                     alert('Anbieter erfolgreich hinzugefügt!');
                     loadProvider(); // Aktualisieren Sie die Liste der Lehrer
                 } else {
-                    alert('Fehler beim Hinzufügen des Anbieter.');
+                    alert('Fehler beim Hinzufügen des Anbieters.');
                 }
             })
             .catch(error => console.error('Fehler:', error));

@@ -1,20 +1,22 @@
-package org.fobidb.subject_area;
+package org.fobidb.subjectarea;
 
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "subject_area") // Optional, falls DB-Tabelle "subject_area" heißen soll
 public class SubjectArea {
 
     @Id
-    public int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(length = 100)
-    public String name;
+    private String name;
 
     public SubjectArea() {
     }
 
-    public SubjectArea(int id, String name) {
+    public SubjectArea(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -23,25 +25,25 @@ public class SubjectArea {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public java.lang.String getName() {
+    public String getName() {  // <-- Kein java.lang.String nötig
         return name;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Subject_Area{" +
+        return "SubjectArea{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

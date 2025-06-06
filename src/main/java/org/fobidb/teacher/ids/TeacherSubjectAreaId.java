@@ -9,11 +9,11 @@ import java.util.Objects;
 public class TeacherSubjectAreaId implements Serializable {
 
     private Long teacherId;
-    private int subjectAreaId;
+    private Long subjectAreaId;
 
     public TeacherSubjectAreaId() {}
 
-    public TeacherSubjectAreaId(Long teacherId, int subjectAreaId) {
+    public TeacherSubjectAreaId(Long teacherId, Long subjectAreaId) {
         this.teacherId = teacherId;
         this.subjectAreaId = subjectAreaId;
     }
@@ -21,8 +21,8 @@ public class TeacherSubjectAreaId implements Serializable {
     public Long getTeacherId() { return teacherId; }
     public void setTeacherId(Long teacherId) { this.teacherId = teacherId; }
 
-    public int getSubjectAreaId() { return subjectAreaId; }
-    public void setSubjectAreaId(int subjectAreaId) { this.subjectAreaId = subjectAreaId; }
+    public Long getSubjectAreaId() { return subjectAreaId; }
+    public void setSubjectAreaId(Long subjectAreaId) { this.subjectAreaId = subjectAreaId; }
 
     @Override
     public boolean equals(Object o) {

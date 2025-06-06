@@ -2,46 +2,48 @@ package org.fobidb.provider;
 
 import jakarta.persistence.*;
 
+/**
+ * Diese Klasse repräsentiert einen Anbieter (Provider) für Trainings.
+ */
 @Entity
-//@Table
-
+@Table(name = "provider") // Optional, nur nötig, wenn Tabellenname explizit sein soll
 public class Provider {
 
-//    @GeneratedValue(
-//            strategy = GenerationType.IDENTITY
-//    )
     @Id
-    public int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(length = 255)
-    public String name;
+    private String name;
 
-
+    // Standardkonstruktor für JPA
     public Provider() {
     }
 
-    public Provider(int id, String name) {
+    // Konstruktor mit ID (z. B. für Testdaten oder DTO-Zwecke)
+    public Provider(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
+    // Konstruktor ohne ID – für neue Objekte
     public Provider(String name) {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public java.lang.String getName() {
+    public String getName() { // Kürzer schreiben
         return name;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

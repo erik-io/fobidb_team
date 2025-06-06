@@ -5,9 +5,11 @@ import org.fobidb.teacher.ids.TeacherTrainingId;
 import org.fobidb.teacher.Teacher;
 import org.fobidb.training.Training;
 
-@Entity
-public class TeacherTraining {
+import java.util.Objects;
 
+@Entity
+@Table(name = "teacher_training")
+public class TeacherTraining {
 
     @EmbeddedId
     private TeacherTrainingId id;
@@ -27,7 +29,8 @@ public class TeacherTraining {
     private boolean canPresent;
     private boolean offersMicroTraining;
 
-    public TeacherTraining() {}
+    public TeacherTraining() {
+    }
 
     public TeacherTraining(Teacher teacher, Training training, int rating, boolean isContact, boolean canPresent, boolean offersMicroTraining) {
         this.teacher = teacher;
@@ -39,26 +42,61 @@ public class TeacherTraining {
         this.offersMicroTraining = offersMicroTraining;
     }
 
-    public TeacherTrainingId getId() { return id; }
-    public void setId(TeacherTrainingId id) { this.id = id; }
+    public TeacherTrainingId getId() {
+        return id;
+    }
 
-    public Teacher getTeacher() { return teacher; }
-    public void setTeacher(Teacher teacher) { this.teacher = teacher; }
+    public void setId(TeacherTrainingId id) {
+        this.id = id;
+    }
 
-    public Training getTraining() { return training; }
-    public void setTraining(Training training) { this.training = training; }
+    public Teacher getTeacher() {
+        return teacher;
+    }
 
-    public int getRating() { return rating; }
-    public void setRating(int rating) { this.rating = rating; }
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
 
-    public boolean isContact() { return isContact; }
-    public void setContact(boolean contact) { isContact = contact; }
+    public Training getTraining() {
+        return training;
+    }
 
-    public boolean isCanPresent() { return canPresent; }
-    public void setCanPresent(boolean canPresent) { this.canPresent = canPresent; }
+    public void setTraining(Training training) {
+        this.training = training;
+    }
 
-    public boolean isOffersMicroTraining() { return offersMicroTraining; }
-    public void setOffersMicroTraining(boolean offersMicroTraining) { this.offersMicroTraining = offersMicroTraining; }
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public boolean isContact() {
+        return isContact;
+    }
+
+    public void setContact(boolean contact) {
+        isContact = contact;
+    }
+
+    public boolean isCanPresent() {
+        return canPresent;
+    }
+
+    public void setCanPresent(boolean canPresent) {
+        this.canPresent = canPresent;
+    }
+
+    public boolean isOffersMicroTraining() {
+        return offersMicroTraining;
+    }
+
+    public void setOffersMicroTraining(boolean offersMicroTraining) {
+        this.offersMicroTraining = offersMicroTraining;
+    }
 
     @Override
     public String toString() {

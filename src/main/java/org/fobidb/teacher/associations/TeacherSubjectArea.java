@@ -2,10 +2,14 @@ package org.fobidb.teacher.associations;
 
 import jakarta.persistence.*;
 import org.fobidb.teacher.ids.TeacherSubjectAreaId;
-import org.fobidb.subject_area.SubjectArea;
+import org.fobidb.subjectarea.SubjectArea;
 import org.fobidb.teacher.Teacher;
 
+/**
+ * Repräsentiert die Zuordnung zwischen einem Lehrer und einem Fachbereich (N:N).
+ */
 @Entity
+@Table(name = "teacher_subject_area")
 public class TeacherSubjectArea {
 
     @EmbeddedId
@@ -21,7 +25,8 @@ public class TeacherSubjectArea {
     @JoinColumn(name = "subject_area_id")
     private SubjectArea subjectArea;
 
-    public TeacherSubjectArea() {}
+    public TeacherSubjectArea() {
+    }
 
     public TeacherSubjectArea(Teacher teacher, SubjectArea subjectArea) {
         this.teacher = teacher;
@@ -29,17 +34,33 @@ public class TeacherSubjectArea {
         this.id = new TeacherSubjectAreaId(teacher.getId(), subjectArea.getId());
     }
 
-    public TeacherSubjectAreaId getId() { return id; }
-    public void setId(TeacherSubjectAreaId id) { this.id = id; }
+    public TeacherSubjectAreaId getId() {
+        return id;
+    }
 
-    public Teacher getTeacher() { return teacher; }
-    public void setTeacher(Teacher teacher) { this.teacher = teacher; }
+    public void setId(TeacherSubjectAreaId id) {
+        this.id = id;
+    }
 
-    public SubjectArea getSubjectArea() { return subjectArea; }
-    public void setSubjectArea(SubjectArea subjectArea) { this.subjectArea = subjectArea; }
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public SubjectArea getSubjectArea() {
+        return subjectArea;
+    }
+
+    public void setSubjectArea(SubjectArea subjectArea) {
+        this.subjectArea = subjectArea;
+    }
 
     @Override
     public String toString() {
-        return "TeacherSubjectArea{teacher=" + teacher.getId() + ", subjectArea=" + subjectArea.getId() + "}";
+        return "TeacherSubjectArea{teacher=" + teacher.getId() +
+                ", subjectArea=" + subjectArea.getId() + "}";
     }
 }

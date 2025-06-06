@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Entity
 public class Teacher {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,7 +31,7 @@ public class Teacher {
     private Set<TeacherTraining> trainings;
 
     @OneToMany(mappedBy = "teacher")
-    private Set<TeacherSubjectArea> subject_areas;
+    private Set<TeacherSubjectArea> subjectAreas;
 
     public Teacher() {
     }
@@ -80,8 +81,8 @@ public class Teacher {
         return nameShort;
     }
 
-    public void setNameShort(String name_short) {
-        this.nameShort = name_short;
+    public void setNameShort(String nameShort) {
+        this.nameShort = nameShort;
     }
 
     public String getEmail() {
@@ -96,8 +97,8 @@ public class Teacher {
         return trainingTime;
     }
 
-    public void setTrainingTime(int training_time) {
-        this.trainingTime = training_time;
+    public void setTrainingTime(int trainingTime) {
+        this.trainingTime = trainingTime;
     }
 
     public Set<TeacherTraining> getTrainings() {
@@ -108,12 +109,12 @@ public class Teacher {
         this.trainings = trainings;
     }
 
-    public Set<TeacherSubjectArea> getSubject_areas() {
-        return subject_areas;
+    public Set<TeacherSubjectArea> getSubjectAreas() {
+        return subjectAreas;
     }
 
-    public void setSubject_areas(Set<TeacherSubjectArea> subject_areas) {
-        this.subject_areas = subject_areas;
+    public void setSubjectAreas(Set<TeacherSubjectArea> subjectAreas) {
+        this.subjectAreas = subjectAreas;
     }
 
     @Override
@@ -122,9 +123,9 @@ public class Teacher {
                 "id=" + id +
                 ", surname='" + surname + '\'' +
                 ", name='" + name + '\'' +
-                ", name_short='" + nameShort + '\'' +
+                ", nameShort='" + nameShort + '\'' +
                 ", email='" + email + '\'' +
-                ", training_time=" + trainingTime +
+                ", trainingTime=" + trainingTime +
                 '}';
     }
 }

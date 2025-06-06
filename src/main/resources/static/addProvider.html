@@ -57,7 +57,7 @@
             .then(response => {
                 if (response.ok) {
                     alert('Anbieter erfolgreich hinzugefügt!');
-                    loadProvider(); // Aktualisieren Sie die Liste der Lehrer
+                    loadProvider(); // Aktualisieren Sie die Liste der Anbieter
                 } else {
                     alert('Fehler beim Hinzufügen des Anbieters.');
                 }
@@ -81,7 +81,7 @@
             .catch(error => console.error('Fehler:', error));
     }
 
-    // Lehrer laden, wenn die Seite geladen wird
+    // Anbieter laden, wenn die Seite geladen wird
     window.onload = loadProvider;
 </script>
 </body>

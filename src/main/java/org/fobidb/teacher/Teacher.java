@@ -10,7 +10,7 @@ import java.util.Set;
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(length = 100)
     private String surname;
@@ -35,7 +35,7 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(int id, String surname, String name, String nameShort, String email, int trainingTime) {
+    public Teacher(Long id, String surname, String name, String nameShort, String email, int trainingTime) {
         this.id = id;
         this.surname = surname;
         this.name = name;
@@ -52,11 +52,11 @@ public class Teacher {
         this.trainingTime = trainingTime;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

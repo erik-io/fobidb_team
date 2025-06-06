@@ -8,18 +8,18 @@ import java.util.Objects;
 @Embeddable
 public class TeacherSubjectAreaId implements Serializable {
 
-    private int teacherId;
+    private Long teacherId;
     private int subjectAreaId;
 
     public TeacherSubjectAreaId() {}
 
-    public TeacherSubjectAreaId(int teacherId, int subjectAreaId) {
+    public TeacherSubjectAreaId(Long teacherId, int subjectAreaId) {
         this.teacherId = teacherId;
         this.subjectAreaId = subjectAreaId;
     }
 
-    public int getTeacherId() { return teacherId; }
-    public void setTeacherId(int teacherId) { this.teacherId = teacherId; }
+    public Long getTeacherId() { return teacherId; }
+    public void setTeacherId(Long teacherId) { this.teacherId = teacherId; }
 
     public int getSubjectAreaId() { return subjectAreaId; }
     public void setSubjectAreaId(int subjectAreaId) { this.subjectAreaId = subjectAreaId; }

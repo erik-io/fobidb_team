@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Lehrer anzeigen</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+<h1>Liste der Anbieter</h1>
+<table id="providerTable">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Anbieter-Daten werden hier eingefügt -->
+  </tbody>
+</table>
+
+<script>
+  function loadProvider() {
+    fetch('http://localhost:8080/api/v1/provider')
+            .then(response => response.json())
+            .then(data => {
+              const tableBody = document.getElementById('providerTable').getElementsByTagName('tbody')[0];
+              tableBody.innerHTML = ''; // Vorhandene Zeilen löschen
+              data.forEach(provider => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).textContent = provider.id;
+                row.insertCell(1).textContent = provider.name;
+              });
+            })
+            .catch(error => console.error('Fehler:', error));
+  }
+
+  // Anbieter laden, wenn die Seite geladen wird
+  window.onload = loadProvider;
+</script>
+</body>
+</html>

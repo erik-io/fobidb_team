@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Anbieter hinzufügen und anzeigen</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Neuen Anbieter hinzufügen</h1>
+<form id="teacherForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"
+           required><br><br>
+
+    <button type="button" onclick="submitForm()">Anbieter hinzufügen</button>
+</form>
+
+<h2>Liste der Anbieter</h2>
+<table id="providerTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Lehrer-Daten werden hier eingefügt -->
+    </tbody>
+</table>
+
+<script>
+    function submitForm() {
+        const formData = {
+            name: document.getElementById('name').value,};
+
+        fetch('http://localhost:8080/api/v1/provider', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('Anbieter erfolgreich hinzugefügt!');
+                    loadProvider(); // Aktualisieren Sie die Liste der Lehrer
+                } else {
+                    alert('Fehler beim Hinzufügen des Anbieter.');
+                }
+            })
+            .catch(error => console.error('Fehler:', error));
+    }
+
+    function loadProvider() {
+        fetch('http://localhost:8080/api/v1/provider')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('providerTable').getElementsByTagName('tbody')[0];
+                tableBody.innerHTML = ''; // Vorhandene Zeilen löschen
+                data.forEach(provider => {
+                    const row = tableBody.insertRow();
+                    row.insertCell(0).textContent = provider.id;
+                    row.insertCell(1).textContent = provider.name;
+
+                });
+            })
+            .catch(error => console.error('Fehler:', error));
+    }
+
+    // Lehrer laden, wenn die Seite geladen wird
+    window.onload = loadProvider;
+</script>
+</body>
+</html>

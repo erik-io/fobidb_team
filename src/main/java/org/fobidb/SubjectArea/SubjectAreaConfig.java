@@ -8,7 +8,7 @@ import java.util.List;
 
 
 /**
- * Die Klasse SujectAreaConfig ist eine Konfigurationsklasse, die Teil der Application Context
+ * Die Klasse SubjectAreaConfig ist eine Konfigurationsklasse, die Teil der Application Context
  * Konfiguration in einer Spring-basierten Anwendung ist.
  * <p>
  * Typischerweise wird sie verwendet, um Einstellungen, Beans, oder andere Konfigurationen

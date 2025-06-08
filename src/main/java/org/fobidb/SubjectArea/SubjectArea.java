@@ -51,7 +51,7 @@ public class SubjectArea {
 
     @Override
     public String toString() {
-        return "Provider{" +
+        return "SubjectArea{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

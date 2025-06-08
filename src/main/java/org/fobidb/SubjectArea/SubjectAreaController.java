@@ -31,7 +31,7 @@ public class SubjectAreaController {
         this.subjectAreaService = subjectAreaService;
     }
     /**
-     * Behandelt GET-Anfragen an /api/v1/provider.
+     * Behandelt GET-Anfragen an /api/v1/subjectArea.
      * Ruft alle Anbieter ab.
      *
      * @return eine Liste von {@code Provider}-Objekten, die alle Anbieter repräsentieren
@@ -60,7 +60,7 @@ public class SubjectAreaController {
      * @param subjectAreaId Die ID des Fachbereichs, der gelöscht werden soll
      */
     @DeleteMapping(path = "{subjectAreaId}")
-    // Wir setzen "providerId" als Pfadvariable, damit die ID der zu löschenden Ressource in der URL enthalten ist, da DELETE-Anfragen in der Regel keinen Request Body nutzen.
+    // Wir setzen "subjectAreaId" als Pfadvariable, damit die ID der zu löschenden Ressource in der URL enthalten ist, da DELETE-Anfragen in der Regel keinen Request Body nutzen.
 
     public void deleteSubjectArea(@PathVariable("subjectAreaId") Long subjectAreaId) {
         subjectAreaService.deleteSubjectArea(subjectAreaId);

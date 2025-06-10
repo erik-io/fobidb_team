@@ -38,7 +38,7 @@ public class SubjectAreaService {
         // Validierung: Prüfen, ob ein Fachbereich mit dem gleichen Namen bereits existiert.
         Optional<SubjectArea> optionalSubjectArea = subjectAreaRepository.findByName(subjectArea.getName()); // Methode aus dem SubjectAreaRepository
         if (optionalSubjectArea.isPresent()) {  // Wir prüfen, ob das Optional einen Wert enthält
-            throw new IllegalStateException("SubjectArea with Name: " + subjectArea.getName() + " already exists");
+            throw new IllegalStateException("SubjectArea with name: " + subjectArea.getName() + " already exists");
         }
         subjectAreaRepository.save(subjectArea);
     }
@@ -47,7 +47,7 @@ public class SubjectAreaService {
         // Prüfen, ob der Fachbereich mit der gegebenen ID existiert, bevor er gelöscht wird
         boolean exists = subjectAreaRepository.existsById(subjectAreaId);
         if (!exists) {
-            throw new IllegalStateException("SubjectArea with Id: " + subjectAreaId + " does not exist");
+            throw new IllegalStateException("SubjectArea with id: " + subjectAreaId + " does not exist");
         }
         subjectAreaRepository.deleteById(subjectAreaId);
     }

@@ -27,14 +27,14 @@ public class SubjectAreaConfig {
         return args -> {
             if (subjectAreaRepository.count() == 0){
 
-                SubjectArea Hauswirtschaft = new SubjectArea("Hauswirtschaft");
-                SubjectArea Berufsvorbereitung= new SubjectArea("Berufsvorbereitung");
-                SubjectArea Wirtschaft_und_Verwaltung = new SubjectArea("Wirtschaft_und_Verwaltung");
-                SubjectArea Technik = new SubjectArea("Technik");
-                SubjectArea Sonderpaedagogik_und_Inklusion = new SubjectArea("Sonderpaedagogik_und_Inklusion");
-                SubjectArea Allgemeinbildung = new SubjectArea("Allgemeinbildung");
+                SubjectArea hauswirtschaft = new SubjectArea("Hauswirtschaft");
+                SubjectArea berufsvorbereitung= new SubjectArea("Berufsvorbereitung");
+                SubjectArea wirtschaftUndVerwaltung = new SubjectArea("Wirtschaft und Verwaltung");
+                SubjectArea technik = new SubjectArea("Technik");
+                SubjectArea sonderpaedagogikUndInklusion = new SubjectArea("Sonderpaedagogik und Inklusion");
+                SubjectArea allgemeinbildung = new SubjectArea("Allgemeinbildung");
 
-                subjectAreaRepository.saveAll(List.of(Hauswirtschaft,Berufsvorbereitung,Wirtschaft_und_Verwaltung,Technik,Sonderpaedagogik_und_Inklusion,Allgemeinbildung));
+                subjectAreaRepository.saveAll(List.of(hauswirtschaft,berufsvorbereitung, wirtschaftUndVerwaltung,technik,sonderpaedagogikUndInklusion,allgemeinbildung));
             }
         };
     }

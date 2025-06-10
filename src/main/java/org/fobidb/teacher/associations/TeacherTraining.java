@@ -7,21 +7,27 @@ import org.fobidb.training.Training;
 
 import java.util.Objects;
 
+/**
+ * Repräsentiert die Zuordnung zwischen einem Lehrer und dem Training.
+ */
 @Entity
-@Table(name = "teacher_training")
+@Table(name = "teacher_training") // Name der Join-Tabelle in der Datenbank
 public class TeacherTraining {
 
+    //Zusammengesetzter Primärschlüssel bestehend aus Teacher-ID und Training-ID
     @EmbeddedId
     private TeacherTrainingId id;
 
+    //Verknüpfung zur Teacher-Entität
     @ManyToOne
-    @MapsId("teacherId")
-    @JoinColumn(name = "teacher_id")
+    @MapsId("teacherId")    // Die Annotation @MapsId verknüpft dieses Feld mit dem entsprechenden Teil im zusammengesetzten Schlüssel
+    @JoinColumn(name = "teacher_id")    // Name der Spalte in der Join-Tabelle
     private Teacher teacher;
 
+    //Verknüpfung zur Teacher-Entität
     @ManyToOne
-    @MapsId("trainingId")
-    @JoinColumn(name = "training_id")
+    @MapsId("trainingId")   // Auch hier wird @MapsId verwendet, um die Kopplung zum zusammengesetzten Schlüssel herzustellen
+    @JoinColumn(name = "training_id")   // Name der Spalte in der Join-Tabelle
     private Training training;
 
     private int rating;
@@ -29,9 +35,11 @@ public class TeacherTraining {
     private boolean canPresent;
     private boolean offersMicroTraining;
 
+    // Standartstruktur (wird con JPA verwendet)
     public TeacherTraining() {
     }
 
+    // Konstruktor zur Initialisieren aller Felder
     public TeacherTraining(Teacher teacher, Training training, int rating, boolean isContact, boolean canPresent, boolean offersMicroTraining) {
         this.teacher = teacher;
         this.training = training;
@@ -42,6 +50,7 @@ public class TeacherTraining {
         this.offersMicroTraining = offersMicroTraining;
     }
 
+    // Getter und Setter
     public TeacherTrainingId getId() {
         return id;
     }
@@ -98,6 +107,7 @@ public class TeacherTraining {
         this.offersMicroTraining = offersMicroTraining;
     }
 
+    // String-Darstellung der Zuordung
     @Override
     public String toString() {
         return "TeacherTraining{" +

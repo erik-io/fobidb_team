@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 /**
  * Diese Klasse repräsentiert einen Anbieter (Provider) für Trainings.
  */
-@Entity
-@Table(name = "provider") // Optional, nur nötig, wenn Tabellenname explizit sein soll
+@Entity // Markiert die Klasse als JPA-Entity (Datenbanktabelle)
+@Table(name = "provider") // Optional, falls DB-Tabelle "subject_area" heißen soll
 public class Provider {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // Primärschlüssel der Entität
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatisches erstellen der ID durch die Datenbank
     private Long id;
 
     @Column(length = 255)
@@ -20,17 +20,18 @@ public class Provider {
     public Provider() {
     }
 
-    // Konstruktor mit ID (z. B. für Testdaten oder DTO-Zwecke)
+    // Konstruktor mit allen Feldern
     public Provider(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    // Konstruktor ohne ID – für neue Objekte
+    // Konstruktor ohne ID
     public Provider(String name) {
         this.name = name;
     }
 
+    // Getter und Setter
     public Long getId() {
         return id;
     }
@@ -47,6 +48,7 @@ public class Provider {
         this.name = name;
     }
 
+    //Gibt eine stringbasierte Darstellung des Trainingsobjekts zurück
     @Override
     public String toString() {
         return "Provider{" +

@@ -2,29 +2,36 @@ package org.fobidb.subjectarea;
 
 import jakarta.persistence.*;
 
-@Entity
+/**
+ * Diese Klasse repräsentiert einen Anbieter (Subjectarea) für Trainings.
+ */
+@Entity // Markiert die Klasse als JPA-Entity (Datenbanktabelle)
 @Table(name = "subject_area") // Optional, falls DB-Tabelle "subject_area" heißen soll
 public class SubjectArea {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // Primärschlüssel der Entität
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatische ID-Generierung durch die Datenbank
     private Long id;
 
     @Column(length = 100)
     private String name;
 
+    // Standart Konstruktor (wird von JPA benötigt)
     public SubjectArea() {
     }
 
+    // Konstruktor mit allen Feldern
     public SubjectArea(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
+    // Konstruktor ohne ID
     public SubjectArea(String name) {
         this.name = name;
     }
 
+    //Getter und Setter
     public Long getId() {
         return id;
     }
@@ -41,6 +48,7 @@ public class SubjectArea {
         this.name = name;
     }
 
+    //Gibt eine stringbasierte Darstellung des Trainingsobjekts zurück
     @Override
     public String toString() {
         return "SubjectArea{" +

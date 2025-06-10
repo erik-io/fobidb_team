@@ -6,11 +6,15 @@ import org.fobidb.teacher.associations.TeacherTraining;
 
 import java.util.Set;
 
-@Entity
+/**
+ * Diese Klasse repräsentiert einen Anbieter (Teacher) für Trainings.
+ */
+@Entity  // Markiert die Klasse als JPA-Entity (Datenbanktabelle)
+@Table(name = "teacher") // Optional, falls DB-Tabelle "subject_area" heißen soll
 public class Teacher {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id  // Primärschlüssel der Entität
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Automatische ID-Generierung durch die Datenbank
     private Long id;
 
     @Column(length = 100)
@@ -27,15 +31,17 @@ public class Teacher {
 
     private int trainingTime;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher")  // Beziehung zu TeacherTraining, bidirektional
     private Set<TeacherTraining> trainings;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher")  // Beziehung zu TeacherSubjectArea, bidirektional
     private Set<TeacherSubjectArea> subjectAreas;
 
+    // Standardkonstruktor (wird von JPA benötigt)
     public Teacher() {
     }
 
+    // Konstruktor mit allen Attributen inkl. ID
     public Teacher(Long id, String surname, String name, String nameShort, String email, int trainingTime) {
         this.id = id;
         this.surname = surname;
@@ -45,6 +51,7 @@ public class Teacher {
         this.trainingTime = trainingTime;
     }
 
+    // Konstruktor ohne ID
     public Teacher(String surname, String name, String nameShort, String email, int trainingTime) {
         this.surname = surname;
         this.name = name;
@@ -53,6 +60,7 @@ public class Teacher {
         this.trainingTime = trainingTime;
     }
 
+    // Getter und Setter
     public Long getId() {
         return id;
     }
@@ -117,6 +125,7 @@ public class Teacher {
         this.subjectAreas = subjectAreas;
     }
 
+    //Gibt eine stringbasierte Darstellung des Trainingsobjekts zurück
     @Override
     public String toString() {
         return "Teacher{" +

@@ -5,35 +5,38 @@ import org.fobidb.provider.Provider;
 
 import java.util.Date;
 
-@Entity
-//@Table
+/**
+ * Diese Klasse repräsentiert einen Anbieter (Training) für Trainings.
+ */
+@Entity // Markiert die Klasse als JPA-Entity (Datenbanktabelle)
+@Table(name = "Training") // Optional, falls DB-Tabelle "subject_area" heißen soll
 public class Training {
-//    @GeneratedValue(
-//            strategy = GenerationType.IDENTITY
-//    )
-    @Id
-    public int id;
+
+    @Id // Primärschlüssel der Entität
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatische ID-Generierung durch die Datenbank
+    private int id;
 
     @Column(length = 255)
-    public String title;
+    private String title;
 
     @Temporal(TemporalType.DATE)
-    public Date date;
+    private Date date;
 
-    public int duration;
+    private int duration;
 
     @Column(length = 255)
-    public String location;
+    private String location;
 
-
+    // Verknüpfung zum Provider
     @ManyToOne
-    @JoinColumn(name = "provider_id")
-    public Provider provider;
+    @JoinColumn(name = "provider_id") // Fremdschlüssel in der Datenbank
+    private Provider provider;
 
-
+    // Standardkonstruktor (wird von JPA benötigt)
     public Training() {
     }
 
+    // Konstruktor mit allen Feldern
     public Training(int id, String title, Date date, int duration, String location, Provider provider) {
         this.id = id;
         this.title = title;
@@ -43,6 +46,7 @@ public class Training {
         this.provider = provider;
     }
 
+    // Konstruktor ohne ID
     public Training(String title, Date date, int duration, String location, Provider provider) {
         this.title = title;
         this.date = date;
@@ -51,6 +55,7 @@ public class Training {
         this.provider = provider;
     }
 
+    // Getter und Setter
     public int getId() {
         return id;
     }
@@ -99,6 +104,7 @@ public class Training {
         this.provider = provider;
     }
 
+    //Gibt eine stringbasierte Darstellung des Trainingsobjekts zurück
     @Override
     public String toString() {
         return "Training{" +

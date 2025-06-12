@@ -2,7 +2,7 @@ package org.fobidb.teacher.associations;
 
 import jakarta.persistence.*;
 import org.fobidb.teacher.ids.TeacherSubjectAreaId;
-import org.fobidb.subjectarea.SubjectArea;
+import org.fobidb.subjectArea.SubjectArea;
 import org.fobidb.teacher.Teacher;
 
 /**

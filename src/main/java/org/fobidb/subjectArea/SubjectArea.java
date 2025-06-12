@@ -1,4 +1,4 @@
-package org.fobidb.subjectarea;
+package org.fobidb.subjectArea;
 
 import jakarta.persistence.*;
 
